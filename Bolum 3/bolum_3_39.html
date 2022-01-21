@@ -1,0 +1,31 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<p>V-show </p>
+
+<div id="app">
+    <p v-if="show">cefri</p>
+    <p v-else>Cemrik</p>
+    <button @click="show=!show">Göster/Gizle</button>
+
+    <p v-if="sayi<10"> sayı 10 dan küçük</p>
+    <p v-else-if="sayi>10"> sayı 10 dan büyük</p>
+    <p v-else> sayı 10 a eşit</p>
+
+    <button @click="showP=!showP">Göster </button>
+
+    <p v-show="showP">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque facilis dolores laboriosam ut alias vero pariatur quasi consequatur. Optio delectus laboriosam non nesciunt provident unde magnam aut, corporis ullam minus.</p>
+
+
+</div>
+<script type="text/javascript">
+    new Vue({
+        el: "#app",
+        data: {
+            show: true,
+            sayi: 25,
+            showP: false
+        },
+
+
+    });
+</script>
+<!--v-if alternatifi  v-if ile v-show araasındaki temel fark ; v-show ile element dom üzerinde hala durur satede style invisible olur. v-if ise domdan kaldırır-->

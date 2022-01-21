@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <title>Vue js ile event dinlemek</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button v-on:click="showAlert">Yine mi Sen!</button>
+        <button v-on:click="counter++">Arttır</button>
+        <button v-on:click="increaseCounter">Arttır</button>
+        <p> {{ counter }} </p>
+    </div>
+
+</body>
+
+<script type="text/javascript">
+    new Vue({
+        el: "#app",
+        data: {
+            counter: 0
+        },
+        methods: {
+            showAlert: function() {
+                alert();
+            },
+            increaseCounter: function() {
+                this.counter++;
+            }
+        }
+    });
+</script>
+
+</html>

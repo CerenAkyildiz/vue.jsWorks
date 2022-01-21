@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <title>Homework 2</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="homework">
+        <div>
+            <!--butona tıklandığınd alert kutusu çıkar-->
+            <button v-on:click="showAlert"> Alert Göster</button>
+        </div>
+        <div>
+            <!--keydown event dinleyerek value değişkeni içeriisnde yazdığınız veriyi saklayınız-->
+            <input type="text" v-on:keydown="valueRecord">
+
+            <p>{{value}}</p>
+        </div>
+
+        <div>
+            <!--2.uygulamayı düzenleyerek enter bastığında katarıldın-->
+            <input type="text" v-on:keydown.enter="valueRecordEnter">
+
+            <p>{{value}}</p>
+        </div>
+
+    </div>
+
+</body>
+
+<script type="text/javascript">
+    new Vue({
+        el: "#homework",
+        data: {
+            value: ''
+
+        },
+        methods: {
+            showAlert: function() {
+                alert('butona bastın dikkat')
+            },
+            valueRecord: function(event) {
+                this.value = event.target.value;
+            },
+            valueRecordEnter: function(event) {
+                this.value = event.target.value;
+            }
+
+        }
+    });
+</script>
+
+</html>

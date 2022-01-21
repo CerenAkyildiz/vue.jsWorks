@@ -1,0 +1,48 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <h1 ref="heading">{{title}}</h1>
+    <button v-on:click="show">Paragrafı Göster</button>
+    <p v-if="showParagraph">Her zaman göremeyebiliriz!!</p>
+</div>
+
+<div id="app2">
+    <h1 ref="heading">{{title}}</h1>
+
+</div>
+
+<script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            title: 'VueJS Instance',
+            showParagraph: false
+        },
+        methods: {
+            show: function() {
+                this.showParagraph = true;
+                this.updateTitle('VueJS Instance (Güncellendi)');
+            },
+            updateTitle: function(title) {
+                this.title = title;
+            }
+        },
+        computed: {
+            lowercaseTitle: function() {
+                return this.title.toLowerCase();
+            }
+        },
+        watch: {
+            title: function(value) {
+                alert('Title değişti, yeni değer : ' + value);
+            }
+        }
+    });
+    new Vue({
+        el: '#app2',
+        data: {
+            title: 'VueJS Instance 2'
+
+        }
+    });
+</script>

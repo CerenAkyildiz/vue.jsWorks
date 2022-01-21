@@ -1,0 +1,26 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<div id="app">
+    <div @click="attachedClass = !attachedClass" :class="divClass" class="box">ceren</div>
+    <div class="box" :class={red:true}>cemre</div>
+    <div class="box" :class="color">barbi</div>
+    <div class="box" :class="[color ,{red:attachedClass}]">akyıldız</div>
+    <hr>
+    <input type="text" v-model="color">
+</div>
+<script type="text/javascript">
+    new Vue({
+        el: "#app",
+        data: {
+            attachedClass: false,
+            color: "green"
+        },
+        computed: {
+            divClass: function() {
+                return {
+                    yellow: this.attachedClass,
+                    red: !this.attachedClass
+                }
+            }
+        }
+    });
+</script>

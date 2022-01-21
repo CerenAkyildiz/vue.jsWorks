@@ -1,0 +1,59 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<p>V-for </p>
+
+<div id="app">
+    <ul>
+        <li v-for="p in products">{{p}}</li>
+
+    </ul>
+
+    <ul>
+        <li v-for="(pr,index) in persons">{{pr.name}} -{{index}}</li>
+
+    </ul>
+
+
+    <div v-for="(product,index) in products">
+        <h3>{{product}}</h3>
+
+        <p>{{index}}</p>
+    </div>
+    <template> <!--template vue js üzerinden render edilmez-->
+        <h3>{{product}}</h3>
+
+        <p>{{index}}</p>
+    </template>
+
+    <ul>
+        <li v-for="pr in persons"></li>
+        <ul>
+            <li v-for="(i,key) in pr">{{ key }} : {{ i }}</li>
+        </ul>
+
+    </ul>
+
+
+
+</div>
+<script type="text/javascript">
+    new Vue({
+        el: "#app",
+        data: {
+            products: ["monitör", "mouse", "klavye"],
+            persons: [{
+                name: "Ceren",
+                email: "cerena@"
+            }, {
+                name: "cemre",
+                email: "cemrea@"
+            }, {
+                name: "eray",
+                email: "eraya@"
+            }]
+        }
+
+
+
+
+    });
+</script>

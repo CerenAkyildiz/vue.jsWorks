@@ -1,0 +1,52 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!--lifecycle -->
+<div id="app">
+    <h1>{{title}}</h1>
+    <button @click="title ='Değiştirildi...' ">Değiştir</button>
+    <button @click="destroy">Destroy</button>
+
+</div>
+
+
+
+<script type="text/javascript">
+    var vm1 = new Vue({
+        el: '#app',
+        data: {
+            title: 'VueJS Instance',
+
+        },
+
+        methods: {
+            destroy: function() {
+                this.$destroy();
+            }
+
+        },
+        beforeCreate: function() {
+            console.log("beforeCreate");
+        },
+        created: function() {
+            console.log("created");
+        },
+        beforeMount: function() {
+            console.log("beforeMount");
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        beforeUpdate: function() {
+            console.log("beforeUpdate");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+        beforeDestroy: function() {
+            console.log("beforeDestroy");
+        },
+        destroyed: function() {
+            console.log("destroyed");
+        },
+
+    });
+</script>

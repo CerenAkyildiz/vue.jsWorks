@@ -1,0 +1,76 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!--componentler ile birden çok yerde kullanmak istediğim tempalteleri bir araya topluyoruz-->
+<div id="app">
+    <h1 ref="heading">{{title}}</h1>
+    <button v-on:click="show" ref="myButton">Paragrafı Göster</button>
+    <!--ref vue js tarafından taninan bir attribute-->
+    <p v-if="showParagraph">Her zaman göremeyebiliriz!!</p>
+    <hello></hello>
+    <hello></hello>
+</div>
+
+<div id="app2">
+    <h1 ref="heading">{{title}}</h1>
+    <button @click="changeTitle">Değiştir</button>
+
+</div>
+
+<div id="app3">
+    <hello></hello>
+</div>
+
+<script type="text/javascript">
+    var data = {
+        title: 'VueJS Instance',
+        showParagraph: false
+    }
+
+    Vue.component('hello', {
+        template: '<h1>component dunyasına hoş geldin</h1>'
+    })
+
+    var vm1 = new Vue({
+        el: '#app',
+        data: data,
+        methods: {
+            show: function() {
+                this.showParagraph = true;
+                this.updateTitle('VueJS Instance (Güncellendi)');
+                this.$refs.myButton.innerText = "Test";
+            },
+            updateTitle: function(title) {
+                this.title = title;
+            }
+        },
+        computed: {
+            lowercaseTitle: function() {
+                return this.title.toLowerCase();
+            }
+        },
+        watch: {
+            title: function(value) {
+                alert('Title değişti, yeni değer : ' + value);
+            }
+        }
+    });
+    setTimeout(function() {
+        vm1.title = "Timer tarafından değiştirildi";
+        vm1.show();
+    }, 2000); //vue js tüm prop dışardan erişebiliriz. methods,data ,computer vs. watcher layer sayesinde dışarıdan tüm tanımlana prop takip edilebiliyor.
+
+    var vm2 = new Vue({
+        el: '#app2',
+        data: {
+            title: 'VueJS Instance 2'
+
+        }
+    });
+
+    var vm3 = new Vue({
+        template: '<p>cefri</p>' //string template  
+    }); //vue instance oluştu
+
+    //vm3.$mount('#app3'); //template mount
+    //vm3.$mount();
+    //document.getElementById('app3').appendChild(vm3.$el);
+</script>

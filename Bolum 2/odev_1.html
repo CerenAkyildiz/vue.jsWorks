@@ -1,0 +1,61 @@
+<html>
+
+<head>
+    <title>Homework 1</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="homework">
+        <p>
+            <!--name and age {{}} sytanx ile yazdır-->
+            Vuejs muazzam bir Framework - {{name}} {{age}}
+
+        </p>
+        <p>
+            <!-- age *5 yap ve yazdr-->
+            {{carp()}}
+        </p>
+
+        <p>
+            <!--0 ile 1 arasındaki rastgale sayı-->
+            {{random()}}
+        </p>
+        <!--vind ie mig gösterme-->
+        <img v-bind:src="penguen" width="100" />
+
+        <hr>
+        <div>
+            <!--name değişlenin değerininin <input/> iççine yazdığınız değer ile anlık değiştirilmesini sğaayınız-->
+            <input type="text" v-on:input="changeName">
+        </div>
+
+    </div>
+
+</body>
+
+<script type="text/javascript">
+    new Vue({
+        el: "#homework",
+        data: {
+            name: "Ceren",
+            age: "28",
+            penguen: "C:\\Users\\Ceren Akyıldız\\Desktop\\penguen.jpg"
+
+        },
+        methods: {
+            carp: function() {
+                return this.age * 5;
+            },
+            random: function() {
+                return Math.random(0, 1);
+            },
+            changeName: function(event) {
+                this.name = event.target.value;
+            }
+        }
+
+    });
+</script>
+
+</html>

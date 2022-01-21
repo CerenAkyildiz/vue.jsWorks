@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <title>Vue js ile bolum 3 odev</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<!--tek satırlık js kodu yazılabilir-->
+
+<body>
+    <div id="homework">
+        <p>Şuanki değer :{{ value }}</p>
+        <button @click="value+=5">add 5 </button>
+        <button @click="value+=1">add 1</button>
+        <p>{{ result }}</p>
+
+        <div>
+            <input type="text" v-model="timeOut">
+        </div>
+    </div>
+
+</body>
+
+<script type="text/javascript">
+    new Vue({
+        el: "#homework",
+        data: {
+            value: 0,
+            timeOut: 3000
+
+        },
+        computed: {
+            result: function() {
+                return this.value == 36 ? "tamamlandı" : "henüz bitmedi"
+            }
+        },
+        watch: {
+            result: function(value) {
+                vm = this;
+                setTimeout(() => {
+                    vm.value = 0;
+                }, this.timeOut);
+            }
+
+        }
+
+    });
+</script>
+
+
+
+</html>

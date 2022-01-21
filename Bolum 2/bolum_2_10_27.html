@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <title>Vue js ile Computed Properties ile Değişikliklere Karşılık Vermek</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<!--tek satırlık js kodu yazılabilir-->
+
+<body>
+    <div id="app">
+        <button v-on:click="counter++">Arttır</button>
+        <button v-on:click="counter--">Azalt</button>
+        <button v-on:click="secondCounter++">2.COUNTER</button>
+        <p>Counter :{{counter}} | {{secondCounter}}</p>
+        <p>{{result()}} | {{output}}</p>
+    </div>
+
+</body>
+
+<script type="text/javascript">
+    new Vue({
+        el: "#app",
+        data: {
+            counter: 0,
+            secondCounter: 0
+
+
+        },
+        methods: {
+            result: function() {
+                console.log("ÇALIŞTI")
+                return this.counter > 10 ? "10 dan büyük" : "10 dan küçük"
+            }
+
+        },
+        computed: {
+            output: function() {
+                return this.counter > 10 ? "10 dan büyük" : "10 dan küçük"
+            }
+        }
+    });
+</script>
+
+<!--COMPUTED PROP: ASLINDA DATA GİBİ DAVRANIR FAKAT METHHOD GİBİ ÇALIŞIR  computed kodu analiz eder ihtiyacı olan değişken deiştiğinde çalışır, prop bağımlılığıyla çalışır  -->
+
+</html>
